@@ -1,0 +1,61 @@
+#include<stdio.h>
+
+struct fraction
+{ int num,deno;
+};
+
+struct fractions
+{ int n;
+struct fraction f[10];
+};
+
+void input()
+{
+struct fractions fs ;
+
+printf("\nenter the no. of fractional numbers to add:");
+scanf("%d",&fs.n);
+for(int i=0;i<fs.n;i++)
+{
+printf("\nenter the number%d: numerator and denominator:",i+1);
+scanf("%d %d",&fs.f[i].num,&fs.f[i].deno);
+}
+
+}
+
+struct fractions compute(struct fractions fs)
+{
+    
+int i;
+for(i=0;i<fs.n;i++)
+{
+printf("\nthe fractional number(%d)is%d/%d",i+1,fs.f[i].num,fs.f[i].deno);
+}
+
+do
+{
+
+int a= fs.f[0].num;
+int c= fs.f[1].num;
+int b= fs.f[0].deno;
+int d= fs.f[1].num;
+
+int e=(a*d)+(c*b);
+int f=b*d;
+
+printf("\nthe sum of %d fractional numbers is %d/%d",fs.n+1,fs.f[0].num,fs.f[0].deno);
+
+{
+i=2;
+fs.f[i-1].num=fs.f[i].num;
+fs.f[i-1].deno=fs.f[i].deno;
+}
+
+}while(i<fs.n);
+}
+
+void main()
+{
+input();
+compute();
+}
